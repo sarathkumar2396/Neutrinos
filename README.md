@@ -1,2 +1,2 @@
 # Neutrinos
-Assesment oh html,css and javascript
+Assesment on html,css and javascript
