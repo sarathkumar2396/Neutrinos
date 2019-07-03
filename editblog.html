@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Blog Assignment</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+
+
+</head>
+<body>
+
+<div class="container">
+  <div class="center col-xs-12 col-sm-12 col-md-12">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 jumbotron" style="margin-top: 100px;">
+  <h2>Edit Blog</h2>
+  
+  <form>
+    <div class="form-group">
+      <label for="usr">Title</label>
+      <input type="hidden" class="form-control" id="lid">
+      <input type="text" class="form-control" id="title">
+    </div>
+     <div class="form-group">
+      <label for="comment">Content</label>
+      <textarea class="form-control" rows="5" id="content"></textarea>
+    </div>
+    <div class="form-group pull-right">
+
+      <a href="blog.html" class="btn btn-warning" role="button">Back</a>
+       <button type="button" class="btn btn-primary" onclick="Update();">Update</button>
+      
+    </div>
+  </form>
+</div>
+
+<div class="col-md-3">
+    </div>
+
+
+</div>
+</div>
+
+  <script type="text/javascript">
+     
+     var url_string=window.location.href;
+    var url = new URL(url_string);
+    var c = url.searchParams.get("id");
+     console.log(c);
+    var tbClients = JSON.parse(localStorage.getItem("textvalue"));
+    var cli = tbClients[c];
+    console.log(cli);
+
+        if(c != null) {
+
+            document.getElementById("title").value= cli.title;
+            document.getElementById("content").value= cli.content;
+            document.getElementById("lid").value=c;
+
+
+  
+          }
+
+ function Update(){
+
+   alert("hi");
+    var lid=document.getElementById("lid").value;
+     var u1 = document.getElementById("title").value;
+     var u2 = document.getElementById("content").value;
+    
+     var upData = JSON.parse(localStorage.getItem("textvalue"));
+     var updatedData = upData;
+    updatedData[lid].title = u1;
+    updatedData[lid].content = u2;
+ 
+  localStorage.setItem("textvalue", JSON.stringify(updatedData));
+  
+//  return true;
+  window.location.href = "blog.html";
+
+ }
+
+
+
+
+
+  </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Blog Assignment</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="mystyle.css">
+      <style type="text/css">
+      </style>
+   </head>
+   <body onload="list()">
+      <nav class="navbar bgcolor well">
+         <div class="container-fluid">
+         <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="color: white;">Neutrinos</a>
+         </div>
+      </nav>
+      <div class="container">
+      <div class="row">
+         <div class="col-sm-12 col-md-12">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10 well">
+               <div class="col-md-10">
+                  <h2>Blog Assignment</h2>
+               </div>
+               <div class="col-md-2">
+                  <!-- <button type="button" class="btn btn-info" style="margin-top:18px; ">Create</button> -->
+                  <a href="createblog.html" class="btn btn-primary" role="button" style="margin-top:18px;">Create</a>
+               </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+         </div>
+         <div id="contents"></div>
+      </div>
+      <script type="text/javascript">
+         var selected_index = -1;
+         var tbClients = localStorage.getItem("textvalue");//Retrieve the stored data
+         tbClients = JSON.parse(tbClients); //Converts string to object
+         if(tbClients == null) //If there is no data, initialize an empty array
+           tbClients = [];
+              
+         
+         
+         
+         function list(){    
+         
+         for(var i in tbClients){
+           var cli = tbClients[i];
+           // alert(cli.title);
+         $(".container").append("<div class='col-md-12'><div class='col-md-2'></div><div class='col-md-8 panel panel-default'><div class='col-md-10 panel-heading'><h2 id='title class=''> "+ cli.title +"</h2></div><div class='col-md-2 '><a><i class='fa fa-edit' onclick='Edit(" + i  +")' style='font-size:24px;margin-top:18px;'></i></a></div><div class='col-md-10 panel-body'><h5 id='content'>"+ cli.content +"</h5></div><div class='col-md-2'></div></div><div class='col-md-2'></div></div>"); 
+         }
+         } 
+         
+         
+         
+         function Edit(i){
+         
+         // var cli = JSON.parse(tbClients[i]);
+         
+         alert(i);
+         
+         window.location.href = "editblog.html?id="+i;
+         
+         }
+         
+         
+         
+         
+      </script>
+   </body>

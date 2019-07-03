@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Blog Assignment</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <style type="text/css">
+    
+ 
+
+  </style>
+
+</head>
+<body>
+
+<div class="container">
+  <div class="center col-xs-12 col-sm-12 col-md-12">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 jumbotron" style="margin-top:100px;">
+  <h2 class="">Create Blog</h2>
+  
+  <form name="myForm">
+    <div class="form-group">
+      <label for="usr">Title</label>
+      <input type="text" class="form-control" name="title" id="title">
+      <span id="error-title"></span>
+    </div>
+     <div class="form-group">
+      <label for="comment">Content</label>
+      <textarea class="form-control" rows="6" name="content" id="comment"></textarea><br>
+      <span id="error-content"></span>
+    </div>
+    <div class="form-group pull-right">
+
+       <a href="blog.html" class="btn btn-danger" role="button">Back</a>
+       <button type="button" class="btn btn-success" value="click" onclick="myFunction()">Save</button>
+      
+    </div>
+  </form>
+</div>
+
+<div class="col-md-3">
+    </div>
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+
+
+   function myFunction() {
+
+   // alert("hi");
+    var title = document.getElementById("title").value;
+    var content = document.getElementById("comment").value;
+     alert(title);
+
+     var blog = {
+
+          title : title,
+          content :content
+
+     };  
+     console.log(blog);
+      var  getobj = JSON.parse(localStorage.getItem("textvalue"));
+      if(getobj == null){
+      	getobj =[];
+      }
+      getobj.push(blog);
+    var newobj = JSON.stringify(getobj);
+     console.log(newobj);
+     localStorage.setItem("textvalue",newobj);
+    // console.log(localStorage);
+   
+
+
+   var x = document.forms["myForm"]["title"].value;
+   var y = document.forms["myForm"]["content"].value;
+
+   title_error  = document.getElementById('error-title').value;
+   content_error  = document.getElementById('error-content').value;
+
+  if (x.length < 1 ) {
+    // alert("Title Must be Filled out");
+    // return false;
+   document.getElementById('error-title').innerHTML = " Please Enter Your Title *";
+  }if(y.length < 1){
+             
+     // alert("Content Must be Filled out");
+     // return false;
+
+     document.getElementById('error-content').innerHTML = "Please Enter Your Content *";
+  }else {
+        
+        window.location.href = "blog.html";
+
+  }
+
+  
+    }
+
+
+</script>
+
+</body>
+</html>
